@@ -49,4 +49,14 @@ Lokaler Prototyp; benötigt die hier bereits vorhandenen WebView2- und FFmpeg-In
 [IO.File]::WriteAllText((Join-Path $destination 'README.md'),$intro,[Text.UTF8Encoding]::new($false))
 $manifest.Add(@{file='VEYLCUT.exe';sha256=$expected})
 $manifest | ConvertTo-Json -Depth 4 | Set-Content -LiteralPath (Join-Path $destination '_Nachweise\delivery-sha256.json')
+$installedQa=Join-Path $sourceRoot 'tests\output\installed'
+if(Test-Path -LiteralPath $installedQa){throw 'Installed QA folder already exists; inspect before repeating'}
+New-Item -ItemType Directory -Force -Path $installedQa | Out-Null
+$testProcess=Start-Process -FilePath (Join-Path $destination 'VEYLCUT.exe') -ArgumentList @('--self-test',('"'+$installedQa+'"')) -WindowStyle Hidden -PassThru
+if(-not $testProcess.WaitForExit(60000)){throw 'Delivered EXE test still running; inspect its result before opening the app'}
+if($testProcess.ExitCode -ne 0 -or -not (Test-Path -LiteralPath (Join-Path $installedQa 'result.json'))){throw 'Delivered EXE test failed'}
+Copy-Item -LiteralPath (Join-Path $installedQa 'result.json') -Destination (Join-Path $destination '_Nachweise\installed-result.json')
+# Open the requested interactive app for Jona, after checking the delivered EXE.
+$app=Start-Process -FilePath (Join-Path $destination 'VEYLCUT.exe') -WindowStyle Normal -PassThru
+@{pid=$app.Id;path=$destination;verifiedHash=$expected} | ConvertTo-Json | Set-Content -LiteralPath (Join-Path $sourceRoot 'tests\output\delivery.json')
 @{destination=$destination;exeHash=$expected;verifiedFiles=$manifest.Count} | ConvertTo-Json
