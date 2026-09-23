@@ -1,0 +1,45 @@
+{
+  "schema": 1,
+  "id": "veylcut",
+  "name": "VEYLCUT",
+  "appRootFromMap": "..",
+  "source": "_Projekt",
+  "repository": "_Projekt",
+  "build": "_Projekt/build.ps1",
+  "rules": "_Projekt/AGENTS.md",
+  "verification": "_Projekt/README.md",
+  "launch": "VEYLCUT.exe",
+  "launchKind": "file",
+  "modulePlan": "_Projekt/app-kit.plan.json",
+  "packages": [],
+  "testAndScriptFolders": [
+    "_Projekt/tests"
+  ],
+  "pathPolicy": "Existing source, build, launch and data paths retained; no automatic migration.",
+  "gitPolicy": "Source and documentation in Git; local binaries, packages, profiles and caches excluded. Pinned build dependencies may stay tracked.",
+  "development": {
+    "guide": "_Projekt/DEVELOPMENT.md",
+    "requiredPaths": [
+      "_Projekt/.deps/Microsoft.Web.WebView2.Core.dll",
+      "_Projekt/.deps/Microsoft.Web.WebView2.WinForms.dll",
+      "_Projekt/.deps/WebView2Loader.dll",
+      "_Projekt/.deps/LICENSE.txt"
+    ],
+    "buildAndTestCommands": [
+      "node"
+    ],
+    "frameworkCompiler": true,
+    "manualChecks": [
+      "WebView2 Runtime / Host / GUI-Pruefungen siehe DEVELOPMENT.md",
+      "Fremdrechner-Neuaufbau nicht durch eine Pfadpruefung belegt"
+    ]
+  },
+  "icon": {
+    "source": "_Projekt/ui/icon.svg",
+    "exports": [
+      "_Projekt/assets/icon.png",
+      "_Projekt/assets/icon.ico"
+    ],
+    "policy": "../jano-app-kit/APP_ICONS.md"
+  }
+}

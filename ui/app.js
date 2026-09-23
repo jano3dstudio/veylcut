@@ -92,3 +92,6 @@ window.runSelfTest=async function(){
  notice('Selbsttest bestanden · echter MP4-Export und Vorschau geprüft.');return checks;
 };
 requestAnimationFrame(animate);initialize();
+
+// Native chrome revision 2026-09-21 supplies the persistent creator link.
+(()=>{if(!window.chrome?.webview)return;const hide=()=>document.querySelectorAll('a').forEach(a=>{if(a.textContent.trim().toLowerCase()==='created by jona fynn schlegelmilch')a.style.display='none';});if(document.readyState==='loading')document.addEventListener('DOMContentLoaded',hide,{once:true});else hide();})();

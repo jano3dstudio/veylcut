@@ -1,0 +1,25 @@
+{
+  "schema": 1,
+  "app": "veylcut",
+  "host": "webview2",
+  "state": "prepared",
+  "kitSource": "../../jano-app-kit",
+  "build": "build.ps1",
+  "seams": [
+    "native/Desktop.cs",
+    "ui/index.html",
+    "ui/kit"
+  ],
+  "activeModules": [],
+  "candidateModules": [
+    "window",
+    "web",
+    "looks",
+    "mouse-qa"
+  ],
+  "migration": "WebView-Nachrichten und existierende Render-/Arbeitszustaende explizit an gemeinsame Looks und Aktivitaet anbinden.",
+  "preserve": "Medien, Schnittprojekte und Renderparameter erhalten; echte FFmpeg-Ausgabe separat pruefen.",
+  "gate": "Gemeinsame Bausteine zuerst in Second Brain mit Jona abstimmen. Danach App einzeln anbinden, bauen und visuell pruefen.",
+  "shell": "pending-reference-review",
+  "lookAdapter": "integration-required"
+}

@@ -55,3 +55,16 @@ node .\tests\core.test.cjs
 WebView2 SDK 1.0.2903.40 liegt in der lokalen Lieferkopie unter `.deps`. Für einen frischen Quellcode-Checkout: das gleichnamige Microsoft NuGet-Paket herunterladen und net462-Core/WinForms sowie win-x64 WebView2Loader.dll und LICENSE.txt nach `.deps` übernehmen. Lokale SDK-Herkunft: `jano-app-kit/.deps/webview2-1.0.2903.40`.
 
 Siehe [VERIFICATION.md](VERIFICATION.md), [Markenprüfung](docs/BRAND_CHECK.md), [Schutzbereiche](docs/SAFE_ZONES.md) und [Fremdkomponenten](THIRD_PARTY.md).
+
+## Entwickler-Einstieg · 21.09.2026
+
+[DEVELOPMENT.md](DEVELOPMENT.md) beschreibt Voraussetzungen, konkrete Build-/Testbefehle,
+Datenablage, Modulgrenzen und offene Punkte. Vor Weiterarbeit zuerst dort lesen;
+vorhandene Produktregeln und fachliche Nachweise bleiben massgeblich.
+
+
+## GitHub-Ablage
+
+VEYLCUT – Lokaler Videoeditor mit Schnittvorlagen, Overlays und FFmpeg-Export.
+
+Repository: `jano3dstudio/veylcut` (privat). Quellen, Build-Anleitung und Projektregeln werden versioniert. Persönliche Laufzeitdaten, Zugangsdaten und lokale Sicherungen gehören nicht in Git. Bestehende lokale Start- und Quellpfade bleiben erhalten. Der Upload ist eine Quellcodesicherung; technische Prüfstände und persönliche Freigabe stehen separat in der Projektdokumentation.
